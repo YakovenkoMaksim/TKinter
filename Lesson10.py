@@ -1,0 +1,34 @@
+from tkinter import *
+
+root = Tk()
+root.title('Grid')
+root.geometry('800x400+550+200')
+
+main_menu = Menu(root)
+root.config(menu=main_menu)
+
+# main_menu.add_command(label='File')
+# main_menu.add_command(label='About')
+
+# File
+file_menu = Menu(main_menu, tearoff=0)
+file_menu.add_command(label='Open')
+file_menu.add_command(label='Save')
+file_menu.add_separator()
+file_menu.add_command(label='Exit')
+main_menu.add_cascade(label='File', menu=file_menu)
+
+# f_menu = Frame(root, bg='#1f252a', height=40)
+# f_menu.pack(fill=X)
+f_text = Frame(root)
+f_text.pack(fill=BOTH, expand=1)
+
+t = Text(f_text, bg='#343d46', fg='#c6dec1', padx=10, pady=10, wrap=WORD, font='Arial 14', insertbackground='#eda756',
+         selectbackground='#4e5a65', spacing3=10, width=30)
+t.pack(fill=BOTH, expand=1, side=LEFT)
+
+scroll = Scrollbar(f_text, command=t.yview)
+scroll.pack(fill=Y, side=LEFT)
+t.config(yscrollcommand=scroll.set)
+
+root.mainloop()
